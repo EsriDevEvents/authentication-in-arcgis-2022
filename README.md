@@ -20,3 +20,12 @@ There are 5 projects here that demonstrate 3 of the authentication methods:
 
 The example servers are minimal implementations designed to demonstrate the necessary building blocks for such a service, but require additional security and operational considerations that are beyond the scope of this demo.
 
+## Additional resources
+
+* [Developers.arcgis.com](https://developers.arcgis.com/)
+* [Security and Authentication](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/)
+* [Esri community developer questions](https://community.esri.com/t5/developers-questions/bd-p/developers-questions)
+* [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/latest/authenticate-with-an-arcgis-identity/)
+* [ArcGIS Runtime APIs](https://developers.arcgis.com/net/security-and-authentication/)
+* [ArcGIS API for Python](https://developers.arcgis.com/python/guide/working-with-different-authentication-schemes/)
+* [ArcGIS REST JS](https://developers.arcgis.com/arcgis-rest-js/authenticate/authenticate-with-an-arcgis-identity-rest-js-browser/)
