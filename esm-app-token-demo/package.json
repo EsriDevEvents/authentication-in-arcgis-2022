@@ -1,0 +1,37 @@
+{
+  "name": "esm-vite-demo",
+  "version": "1.1.0",
+  "description": "Demo ArcGIS API for JavaScript using application credential",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^2.8.6"
+  },
+  "dependencies": {
+    "@arcgis/core": "^4.22.2",
+    "axios": "^0.26.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jf990/esri-demos.git"
+  },
+  "keywords": [
+    "javascript",
+    "vite",
+    "arcgis",
+    "esm",
+    "maps"
+  ],
+  "author": "John Foster",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/jf990/esri-demos/issues"
+  },
+  "homepage": "https://github.com/jf990/esri-demos#readme"
+}

@@ -1,0 +1,7 @@
+{
+    "cacheFile": "./.ArcGISTokenCache.json",
+    "logFile": "./debug.log",
+    "appTokenBaseURL": "https://www.arcgis.com/sharing/rest",
+    "appTokenPath": "/oauth2/token/",
+    "tokenExpirationMinutes": 1440
+}

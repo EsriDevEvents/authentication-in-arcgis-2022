@@ -1,0 +1,134 @@
+/**
+ * ArcGIS API for JavaScript demo app using API keys.
+ * This app fill the `appDiv` element in index.html with the map app that searches the map for places
+ * and then finds the 3 closest places to the location clicked on the map.
+ */
+import esriConfig from "@arcgis/core/config";
+import Map from "@arcgis/core/Map";
+import MapView from "@arcgis/core/views/MapView";
+import Graphic from "@arcgis/core/Graphic";
+import Point from "@arcgis/core/geometry/Point";
+import * as route from "@arcgis/core/rest/route";
+import RouteParameters from "@arcgis/core/rest/support/RouteParameters";
+import FeatureSet from "@arcgis/core/rest/support/FeatureSet";
+
+import { apiKey } from "./secret";
+
+esriConfig.apiKey = apiKey;
+
+const mapStartLocation = new Point([-116.5414418, 33.8258333]);
+const demoDestination = new Point([-116.3697003, 33.7062298]);
+const routeUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World";
+
+const routeSymbol = {
+    type: "simple-line",
+    color: [50, 150, 255, 0.75],
+    width: "5",
+};
+
+function addGraphic(type, point, view) {
+    const graphic = new Graphic({
+      symbol: {
+        type: "simple-marker",
+        color: (type === "start") ? "green" : "red",
+        size: "12px",
+        outline: {
+            color: "black",
+            width: "2px",
+        }
+      },
+      geometry: point
+    });
+    view.graphics.add(graphic);
+}
+
+function getRoute(view) {
+
+    const routeParams = new RouteParameters({
+      stops: new FeatureSet({
+        features: view.graphics.toArray()
+      }),
+      returnDirections: true
+    });
+
+    function showRoutes(routes) {
+        routes.forEach((result) => {
+          result.route.symbol = routeSymbol;
+          view.graphics.add(result.route,0);
+        });
+    }
+
+    function showDirections(directions) {
+        function showRouteDirections(directions) {
+            const directionsList = document.createElement("ol");
+            directions.forEach((result,i) => {
+                const direction = document.createElement("li");
+                direction.innerHTML = result.attributes.text + ((result.attributes.length > 0) ? " (" + result.attributes.length.toFixed(2) + " miles)" : "");
+                directionsList.appendChild(direction);
+            });
+            directionsElement.appendChild(directionsList);
+        }
+
+        const directionsElement = document.createElement("div");
+        directionsElement.innerHTML = "<h3>Directions</h3>";
+        directionsElement.classList = "esri-widget esri-widget--panel esri-directions__scroller directions";
+        directionsElement.style.marginTop = "0";
+        directionsElement.style.padding = "0 15px";
+        directionsElement.style.minHeight = "365px";
+
+        showRouteDirections(directions);
+
+        view.ui.empty("top-right");
+        view.ui.add(directionsElement, "top-right");
+    }
+
+    route.solve(routeUrl, routeParams)
+      .then((response) => {
+        showRoutes(response.routeResults)
+        showDirections(response.routeResults[0].directions.features);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+}
+
+function setupMapView() {
+
+    const map = new Map({
+        basemap: "arcgis-navigation",
+    });
+
+    const mapView = new MapView({
+        map,
+        container: "appDiv",
+        center: mapStartLocation,
+        zoom: 11,
+        constraints: {
+            snapToZoom: false
+        }
+    });
+
+    mapView.when(() => {
+        // create a demo route once the view is loaded
+        addGraphic("start", mapView.center, mapView);
+        setTimeout(()=>{
+            addGraphic("finish", demoDestination, mapView);
+            getRoute(mapView);
+        }, 1000);
+    });
+
+    mapView.on("click", (event) => {
+        if (mapView.graphics.length === 0) {
+            addGraphic("start", event.mapPoint, mapView);
+        } else if (mapView.graphics.length === 1) {
+            addGraphic("finish", event.mapPoint, mapView);
+            getRoute(mapView);
+        } else {
+            mapView.graphics.removeAll();
+            mapView.ui.empty("top-right");
+            addGraphic("start", event.mapPoint, mapView);
+        }
+    });
+}
+
+setupMapView();

@@ -1,0 +1,42 @@
+{
+  "name": "app-token-server-demo",
+  "version": "1.1.0",
+  "description": "Node.js service to administer ArcGIS application tokens",
+  "main": "./index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jf990/esri-demos.git"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "arcgis",
+    "security",
+    "authentication"
+  ],
+  "author": "John Foster",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/jf990/esri-demos/issues"
+  },
+  "homepage": "https://github.com/jf990/esri-demos#readme",
+  "dependencies": {
+    "@esri/arcgis-rest-auth": "^3.4.3",
+    "@esri/arcgis-rest-request": "^3.4.3",
+    "@esri/arcgis-rest-demographics": "^3.4.3",
+    "cors": "^2.8.5",
+    "cross-fetch": "^3.1.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "isomorphic-form-data": "^2.0.0",
+    "session-file-store": "^1.5.0"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}
