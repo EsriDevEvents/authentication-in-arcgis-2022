@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>ArcGIS Rest JS OAuth redirect</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/@esri/arcgis-rest-request@3.0.0/dist/umd/request.umd.js"></script>
+    <script src="https://unpkg.com/@esri/arcgis-rest-auth@3.0.0/dist/umd/auth.umd.js"></script>
+
+    <script>
+
+      const match = window.location.href.match(/&state=([^&]+)/);
+      const clientId = match[1];
+      let session;
+      function processAuthentication() {
+        session = arcgisRest.UserSession.completeOAuth2({
+          clientId: clientId
+        });
+        localStorage.setItem("__ARCGIS_REST_USER_SESSION__", session.serialize());
+        window.location.href = "./authentication-page.html";
+      }
+      processAuthentication();
+    </script>
+  </body>
+</html>

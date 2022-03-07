@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/jf990/esri-demos.git"
+    "url": "git+ssh://git@github.com/esridevsummit/arcgis-authentication.git"
   },
   "keywords": [
     "javascript",
