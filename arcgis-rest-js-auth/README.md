@@ -1,8 +1,8 @@
 # ArcGIS REST JS demo using Vite bundler
 
-Demonstration how to perform OAuth authentication using the [ArcGIS REST JS](https://developers.arcgis.com/arcgis-rest-js/) modules.
+Demonstration how to perform OAuth authentication using the [ArcGIS REST JS](https://developers.arcgis.com/arcgis-rest-js/) modules. This is the same demo as [Authenticate with an ArcGIS identity (Browser)](https://developers.arcgis.com/arcgis-rest-js/authenticate/authenticate-with-an-arcgis-identity-rest-js-browser/) only using ESM module packaging with Vite.
 
-Load `/authentication-page.html` in a browser. When you click **Sign In**, the app redirects to ArcGIS Online to ask for credentials and log you in. Once log in completes, your call back URL, `http://localhost:3000/authenticate.html`, is called with the access token. `/authenticate.html` parses the access token from the URL, saves it in local storage, and then redirects back to `/authentication-page.html`.
+Load `/index.html` in a browser. When you click **Sign In**, the app redirects to ArcGIS Online to ask for credentials and log you in. Once log in completes, your call back URL, `http://localhost:3000/authenticate.html`, is called with the access token. `/authenticate.html` parses the access token from the URL, saves it in local storage, and then redirects back to `/index.html`.
 
 > NOTE: `http://localhost:3000/` will depend on the Vite configuration and may changed based on your local environment.
 
@@ -20,7 +20,7 @@ npm install
     - If you do not have an ArcGIS Developer account you can [create on for free](https://developers.arcgis.com/sign-up).
     - If you do not have an application definition then create a new one, set the Redirect URL, and copy that **client ID**.
 
-4. Open `authentication-page.html` in a text editor and paste your **client ID** in place of `YOUR_CLIENT_ID`:
+4. Open `index.html` in a text editor and paste your **client ID** in place of `YOUR_CLIENT_ID`:
 
 ```javascript
 const clientId = "YOUR_CLIENT_ID";
@@ -41,3 +41,9 @@ vite vx.x.x dev server running at:
 ```
 
 Open a web browser at that URL to display your app.
+
+## Troubleshooting
+
+- `Error: 400: Invalid client_id` - make sure you create your own OAuth application and set the `clientId` variable with your **client ID** in `/index.html`.
+- `Error: 498: Invalid token` - the access token expired, sign out and sign in again.
+- Login does not complete or the page does not refresh - make sure your Redirect URL set in your application is registered and set to match the URL in your running app.

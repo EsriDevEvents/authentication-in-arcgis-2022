@@ -14,6 +14,8 @@
     "vite": "^2.8.6"
   },
   "dependencies": {
+    "@esri/arcgis-rest-request": "^3.4.3",
+    "@esri/arcgis-rest-auth": "^3.4.3"
   },
   "repository": {
     "type": "git",
