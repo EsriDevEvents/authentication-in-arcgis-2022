@@ -1,25 +1,26 @@
 import { UserSession } from "@esri/arcgis-rest-auth";
+import { clientID } from "./secret";
 
 let session = null;
-const clientId = "YOUR_CLIENT_ID";
+// Successful login will redirect here. This URL must be registered with the app definition on the server.
 const redirectUri = window.location.origin + "/authenticate.html";
 
 document.getElementById("withPopupButton").addEventListener("click", (event) => {
   // Begin an OAuth2 login using a popup.
   UserSession.beginOAuth2({
-    clientId: clientId,
+    clientId: clientID,
     redirectUri: redirectUri,
     popup: true
   })
-    .then((newSession) => {
-      // Upon a successful login, update the session with the new session.
-      session = newSession;
-      console.log(session);
-      updateSessionInfo(session);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  .then((newSession) => {
+    // Upon a successful login, update the session with the new session.
+    session = newSession;
+    console.log(session);
+    updateSessionInfo(session);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
   event.preventDefault();
 });
 
