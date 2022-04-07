@@ -21,9 +21,9 @@
   "author": "John Foster",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/jf990/esri-demos/issues"
+    "url": "https://github.com/esridevsummit/arcgis-authentication/issues"
   },
-  "homepage": "https://github.com/jf990/esri-demos#readme",
+  "homepage": "https://github.com/esridevsummit/arcgis-authentication/#readme",
   "dependencies": {
     "@esri/arcgis-rest-auth": "^3.4.3",
     "@esri/arcgis-rest-request": "^3.4.3",
