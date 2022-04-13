@@ -6,6 +6,8 @@ This project will demonstrate how to use [ArcGIS application credentials](https:
 2. Application credentials are short-lived tokens, expiring at most in 2 weeks, and require refreshing. API keys never expire.
 3. Application credentials are considered more secure than API keys since the client app must request a token from your server when needed and that token will expire and require refreshing on the server. Since API keys never time out and you embed them in your client app, if they are compromised your only recourse is to revoke the API key, generate a new one, and rebuild and deploy your app with the new key.
 4. Application credentials scope to all of the read-access privileges of the application owner. API keys can be scoped to specific services.
+    - When using an ArcGIS Platform or ArcGIS Developer account, an application credential may access private hosted feature layers owned by the account.
+    - When using an ArcGIS Online account, an application credential may not be used to access private hosted feature layers.
 5. You cannot use application credentials to create or update content.
 
 This project is the same demo as [ESM API key demo](../esm-api-key-demo/) only using application credentials to authenticate instead of API keys. This project also requires a server. I provided two implementations: one using [Node.js app-token-server-demo](../../node-js/app-token-server-demo/) and another with [PHP app-server-token-demo](../../php/app-token-server-demo/).
