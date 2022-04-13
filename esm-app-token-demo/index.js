@@ -20,7 +20,7 @@ let lastGoodToken = null;
 const mapStartLocation = new Point([-116.5414418, 33.8258333]);
 const demoDestination = new Point([-116.3697003, 33.7062298]);
 const routeUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World";
-const featureLayerURL = "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/stores/FeatureServer/0";
+const featureLayerURL = "";
 const appTokenURL = "http://localhost:3080/auth"; // The URL of the token server
 
 // Line symbol to use to display the route

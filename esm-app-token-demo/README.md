@@ -44,7 +44,13 @@ npm install
 const appTokenURL = "http://localhost:3080/auth"; // The URL of the token server
 ```
 
-4. Run the app.
+4. If you would like to include a private hosted feature service on your map, set the URL. To disable this feature, leave the URL empty.
+
+```javascript
+const featureLayerURL = "https://servicesX.arcgis.com/ITEM_ID/arcgis/rest/services/LAYER-ID/FeatureServer/LAYER_INDEX";
+```
+
+5. Run the app.
 
 ```bash
 npm start
@@ -70,3 +76,7 @@ A lot can go wrong with this demo, it requires a lot of things to work exactly r
 2. Check to make sure the server is running at the URL you think it is and the client app can connect to that URL. You can try a tool like Postman to test the connection and that the server is responding.
 3. If the app runs but the map does not show then your token server is not working or it is not able to generate valid tokens.
 4. If the map shows but you cannot perform routing, then your ArcGIS user account does not have sufficient privileges to perform this service.
+5. If the map displays but your feature service does not:
+  - you must own the layer, you cannot use this with layers not owned by the account that created the OAuth 2.0 app registration.
+  - verify your feature service URL on your dashboard (go to https://developers.arcgis.com/layers, select your layer)
+  - verify you have features within the map extent.
