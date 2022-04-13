@@ -10,6 +10,7 @@ import Point from "@arcgis/core/geometry/Point";
 import * as route from "@arcgis/core/rest/route";
 import RouteParameters from "@arcgis/core/rest/support/RouteParameters";
 import FeatureSet from "@arcgis/core/rest/support/FeatureSet";
+import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 import IdentityManager from "@arcgis/core/identity/IdentityManager";
 import Axios from "axios";
 
@@ -19,6 +20,7 @@ let lastGoodToken = null;
 const mapStartLocation = new Point([-116.5414418, 33.8258333]);
 const demoDestination = new Point([-116.3697003, 33.7062298]);
 const routeUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World";
+const featureLayer = "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/stores/FeatureServer/0";
 const appTokenURL = "http://localhost:3080/auth"; // The URL of the token server
 
 // Line symbol to use to display the route
@@ -123,6 +125,21 @@ function setupMapView() {
         }
     });
 
+    if (featureLayer != null && featureLayer != "") {
+        const layer = new FeatureLayer({
+            url: featureLayer
+        });
+        layer.load()
+        .then(function() {
+            map.add(layer);
+        }, function(error) {
+            console.log(error.toString());
+        })
+        .catch(function(error) {
+            console.log(error.toString());
+        })
+    }
+
     mapView.when(() => {
         // create a demo route once the view is loaded
         addGraphic("start", mapView.center, mapView);
@@ -133,12 +150,16 @@ function setupMapView() {
     });
 
     mapView.on("click", (event) => {
+        // when the map is clicked on, start or complete a new route
         if (mapView.graphics.length === 0) {
+            // start a route when there is no prior start point
             addGraphic("start", event.mapPoint, mapView);
           } else if (mapView.graphics.length === 1) {
+            // complete the route from the prior start point to this new point
             addGraphic("finish", event.mapPoint, mapView);
             getRoute(mapView);
           } else {
+            // remote prior route and start a new route
             mapView.graphics.removeAll();
             mapView.ui.empty("top-right");
             addGraphic("start", event.mapPoint, mapView);
