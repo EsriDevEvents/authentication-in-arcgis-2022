@@ -20,7 +20,7 @@ let lastGoodToken = null;
 const mapStartLocation = new Point([-116.5414418, 33.8258333]);
 const demoDestination = new Point([-116.3697003, 33.7062298]);
 const routeUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World";
-const featureLayer = "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/stores/FeatureServer/0";
+const featureLayerURL = "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/stores/FeatureServer/0";
 const appTokenURL = "http://localhost:3080/auth"; // The URL of the token server
 
 // Line symbol to use to display the route
@@ -125,9 +125,10 @@ function setupMapView() {
         }
     });
 
-    if (featureLayer != null && featureLayer != "") {
+    // If you set featureLayerURL to a URL to a private feature service you own, you can show those features on the map.
+    if (featureLayerURL != null && featureLayerURL != "") {
         const layer = new FeatureLayer({
-            url: featureLayer
+            url: featureLayerURL
         });
         layer.load()
         .then(function() {
@@ -167,6 +168,11 @@ function setupMapView() {
     });
 }
 
+/**
+ * Wait for a token. If we previously asked for a token and it has not expired then return
+ * the locally cached token. Otherwise contact the token server and ask it for a token.
+ * @returns {Promise} A Promise that resolves with a token.
+ */
 function requestApplicationToken() {
     return new Promise(function (resolve, reject) {
         // if we still have a good token then use it
@@ -217,7 +223,7 @@ function showErrorMessage(error) {
     }
 };
 
-// contact the server and get a token
+// Get a token and render the map
 requestApplicationToken()
 .then(function(response) {
     setupMapView();
