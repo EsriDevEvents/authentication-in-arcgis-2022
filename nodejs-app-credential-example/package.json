@@ -1,0 +1,38 @@
+{
+    "name": "app-app-credential-example",
+    "version": "1.0.2",
+    "description": "Node.js service to demonstrate ArcGIS application credential",
+    "main": "./index.js",
+    "scripts": {
+      "test": "echo No test defined",
+      "start": "node index.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/esridevsummit/arcgis-authentication.git"
+    },
+    "keywords": [
+      "nodejs",
+      "javascript",
+      "arcgis",
+      "security",
+      "authentication"
+    ],
+    "author": "John Foster",
+    "license": "Apache-2.0",
+    "bugs": {
+      "url": "https://github.com/esridevsummit/arcgis-authentication/issues"
+    },
+    "homepage": "https://github.com/esridevsummit/arcgis-authentication/#readme",
+    "dependencies": {
+      "@esri/arcgis-rest-auth": "^3.4.3",
+      "@esri/arcgis-rest-request": "^3.4.3",
+      "@esri/arcgis-rest-demographics": "^3.4.3",
+      "cross-fetch": "^2.2.6",
+      "dotenv": "^16.0.0",
+      "isomorphic-form-data": "^2.0.0"
+    },
+    "devDependencies": {
+    }
+  }
+  
