@@ -10,6 +10,7 @@ import Point from "@arcgis/core/geometry/Point";
 import * as route from "@arcgis/core/rest/route";
 import RouteParameters from "@arcgis/core/rest/support/RouteParameters";
 import FeatureSet from "@arcgis/core/rest/support/FeatureSet";
+import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 import IdentityManager from "@arcgis/core/identity/IdentityManager";
 import Axios from "axios";
 
@@ -19,6 +20,7 @@ let lastGoodToken = null;
 const mapStartLocation = new Point([-116.5414418, 33.8258333]);
 const demoDestination = new Point([-116.3697003, 33.7062298]);
 const routeUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World";
+const featureLayerURL = "";
 const appTokenURL = "http://localhost:3080/auth"; // The URL of the token server
 
 // Line symbol to use to display the route
@@ -123,6 +125,22 @@ function setupMapView() {
         }
     });
 
+    // If you set featureLayerURL to a URL to a private feature service you own, you can show those features on the map.
+    if (featureLayerURL != null && featureLayerURL != "") {
+        const layer = new FeatureLayer({
+            url: featureLayerURL
+        });
+        layer.load()
+        .then(function() {
+            map.add(layer);
+        }, function(error) {
+            console.log(error.toString());
+        })
+        .catch(function(error) {
+            console.log(error.toString());
+        })
+    }
+
     mapView.when(() => {
         // create a demo route once the view is loaded
         addGraphic("start", mapView.center, mapView);
@@ -133,12 +151,16 @@ function setupMapView() {
     });
 
     mapView.on("click", (event) => {
+        // when the map is clicked on, start or complete a new route
         if (mapView.graphics.length === 0) {
+            // start a route when there is no prior start point
             addGraphic("start", event.mapPoint, mapView);
           } else if (mapView.graphics.length === 1) {
+            // complete the route from the prior start point to this new point
             addGraphic("finish", event.mapPoint, mapView);
             getRoute(mapView);
           } else {
+            // remote prior route and start a new route
             mapView.graphics.removeAll();
             mapView.ui.empty("top-right");
             addGraphic("start", event.mapPoint, mapView);
@@ -146,6 +168,11 @@ function setupMapView() {
     });
 }
 
+/**
+ * Wait for a token. If we previously asked for a token and it has not expired then return
+ * the locally cached token. Otherwise contact the token server and ask it for a token.
+ * @returns {Promise} A Promise that resolves with a token.
+ */
 function requestApplicationToken() {
     return new Promise(function (resolve, reject) {
         // if we still have a good token then use it
@@ -196,7 +223,7 @@ function showErrorMessage(error) {
     }
 };
 
-// contact the server and get a token
+// Get a token and render the map
 requestApplicationToken()
 .then(function(response) {
     setupMapView();
