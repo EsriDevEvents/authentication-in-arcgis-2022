@@ -4,10 +4,10 @@ We produce technical talks at Esri Developer Summit every year to explain what's
 
 ## Related talks
 
-|Developer Summit Edition|Resources|
+|Developer Summit Edition|Session|
 |---|---|
 |DevSummit Europe 2022|[Authentication in ArcGIS: A Practical Approach](./devsummit-europe-22)|
-|DevSummit USA 2022|[Authentication in ArcGIS](./devsummit-palm-sprints-22)|
+|DevSummit USA 2022|[Authentication in ArcGIS](./devsummit-usa-22)|
 
 
 ## Resources
@@ -31,5 +31,6 @@ We produce technical talks at Esri Developer Summit every year to explain what's
   * [ArcGIS REST JS | Authentication](https://developers.arcgis.com/arcgis-rest-js/authentication/)
 * Other samples:
   * [PHP and JavaScript/Node OAuth code samples](https://github.com/esri-es/arcgis-oauth-samples)
+  * Find more samples in the DevSummit sessions folder
 * [Get API key usage statistics | Using Python](https://github.com/esrinederland/CoolScripts/tree/main/BillingAPI)
 * [How to create an API key tutorial](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/tutorials/create-and-manage-an-api-key/)
