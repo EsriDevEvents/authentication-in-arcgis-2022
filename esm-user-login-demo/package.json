@@ -6,11 +6,12 @@
   "scripts": {
     "test": "jest",
     "dev": "vite",
-    "start": "tsc && vite --https",
+    "start": "tsc-watch --onSuccess \"vite --https\"",
     "build": "vite build",
     "serve": "vite preview"
   },
   "devDependencies": {
+    "tsc-watch": "^5.0.3",
     "vite": "^2.8.6"
   },
   "dependencies": {
