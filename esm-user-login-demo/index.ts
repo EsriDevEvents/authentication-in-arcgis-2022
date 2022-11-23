@@ -12,6 +12,7 @@ import RouteParameters from "@arcgis/core/rest/support/RouteParameters";
 import FeatureSet from "@arcgis/core/rest/support/FeatureSet";
 import IdentityManager from "@arcgis/core/identity/IdentityManager";
 import OAuthInfo from "@arcgis/core/identity/OAuthInfo";
+import Credential from "@arcgis/core/identity/Credential";
 
 // @ts-ignore
 import { clientID } from "./secret";
@@ -143,42 +144,43 @@ function setupMapView() {
   });
 }
 
-function configureApp() {
+async function configureApp() {
   const oauthInfo = new OAuthInfo({
     appId: clientID,
     popup: false,
   });
   IdentityManager.registerOAuthInfos([oauthInfo]);
 
-  IdentityManager.checkSignInStatus(oauthInfo.portalUrl + "/sharing")
-    .then(function (userCredential) {
-      // @ts-ignore
-      document.getElementById("userId").innerText = userCredential.userId;
-      // @ts-ignore
-      document.getElementById("personalizedPanel").style.display = "block";
-      // once user is logged in we can show map and route
-      setupMapView();
-    })
-    .catch(function (error) {
-      // Anonymous view
-      // @ts-ignore
-      document.getElementById("loginPanel").style.display = "block";
-      // @ts-ignore
-      document.getElementById("loginMessage").innerText =
-        "You are not logged in. " + error.toString();
+  try {
+    const userCredential: Credential = await IdentityManager.checkSignInStatus(
+      oauthInfo.portalUrl + "/sharing"
+    );
+    // @ts-ignore
+    document.getElementById("userId").innerText = userCredential.userId;
+    // @ts-ignore
+    document.getElementById("personalizedPanel").style.display = "block";
+    // once user is logged in we can show map and route
+    setupMapView();
+  } catch (error: any) {
+    // Anonymous view
+    // @ts-ignore
+    document.getElementById("loginPanel").style.display = "block";
+    // @ts-ignore
+    document.getElementById("loginMessage").innerText =
+      "You are not logged in. " + error.toString();
+
+    // @ts-ignore
+    document.getElementById("sign-in").addEventListener("click", function () {
+      // Redirect to OAuth Sign In page
+      IdentityManager.getCredential(oauthInfo.portalUrl + "/sharing");
     });
 
-  // @ts-ignore
-  document.getElementById("sign-in").addEventListener("click", function () {
-    // Redirect to OAuth Sign In page
-    IdentityManager.getCredential(oauthInfo.portalUrl + "/sharing");
-  });
-
-  // @ts-ignore
-  document.getElementById("sign-out").addEventListener("click", function () {
-    IdentityManager.destroyCredentials();
-    window.location.reload();
-  });
+    // @ts-ignore
+    document.getElementById("sign-out").addEventListener("click", function () {
+      IdentityManager.destroyCredentials();
+      window.location.reload();
+    });
+  }
 }
 
 configureApp();

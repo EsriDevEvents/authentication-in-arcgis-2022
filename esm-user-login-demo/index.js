@@ -129,39 +129,39 @@ function setupMapView() {
         }
     });
 }
-function configureApp() {
+async function configureApp() {
     const oauthInfo = new OAuthInfo({
         appId: clientID,
         popup: false,
     });
     IdentityManager.registerOAuthInfos([oauthInfo]);
-    IdentityManager.checkSignInStatus(oauthInfo.portalUrl + "/sharing")
-        .then(function (userCredential) {
+    try {
+        const userCredential = await IdentityManager.checkSignInStatus(oauthInfo.portalUrl + "/sharing");
         // @ts-ignore
         document.getElementById("userId").innerText = userCredential.userId;
         // @ts-ignore
         document.getElementById("personalizedPanel").style.display = "block";
         // once user is logged in we can show map and route
         setupMapView();
-    })
-        .catch(function (error) {
+    }
+    catch (error) {
         // Anonymous view
         // @ts-ignore
         document.getElementById("loginPanel").style.display = "block";
         // @ts-ignore
         document.getElementById("loginMessage").innerText =
             "You are not logged in. " + error.toString();
-    });
-    // @ts-ignore
-    document.getElementById("sign-in").addEventListener("click", function () {
-        // Redirect to OAuth Sign In page
-        IdentityManager.getCredential(oauthInfo.portalUrl + "/sharing");
-    });
-    // @ts-ignore
-    document.getElementById("sign-out").addEventListener("click", function () {
-        IdentityManager.destroyCredentials();
-        window.location.reload();
-    });
+        // @ts-ignore
+        document.getElementById("sign-in").addEventListener("click", function () {
+            // Redirect to OAuth Sign In page
+            IdentityManager.getCredential(oauthInfo.portalUrl + "/sharing");
+        });
+        // @ts-ignore
+        document.getElementById("sign-out").addEventListener("click", function () {
+            IdentityManager.destroyCredentials();
+            window.location.reload();
+        });
+    }
 }
 configureApp();
 //# sourceMappingURL=index.js.map
