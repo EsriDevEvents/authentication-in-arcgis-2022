@@ -96,7 +96,7 @@ function getRoute(view: MapView) {
 
   route
     .solve(routeUrl, routeParams)
-    // reponse of type __esri.DirectionsLastRoute
+    // response of type __esri.DirectionsLastRoute
     .then((response: any) => {
       showRoutes(response.routeResults);
       showDirections(response.routeResults[0].directions.features);
