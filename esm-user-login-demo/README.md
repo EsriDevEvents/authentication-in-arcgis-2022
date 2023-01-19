@@ -40,10 +40,10 @@ Open a web browser to the location indicated on the console:
 ```txt
 vite vx.x.x dev server running at:
 
-  > Local: http://localhost:3000/
+  > Local: https://localhost:3000/
 ```
 
-At this point note the URL you app is running at and copy it. In this case it is `http://localhost:3000/` (it could be different on your computer.) This is your _redirect URI_ that you will need in order to complete the OAuth 2.0 login process.
+At this point note the URL you app is running at and copy it. In this case it is `https://localhost:3000/` (it could be different on your computer.) This is your _redirect URI_ that you will need in order to complete the OAuth 2.0 login process.
 
 6. OAuth 2.0 requires the authentication server to return to a registered redirect URL. Return to your [developer dashboard](https://developers.arcgis.com/applications) application definition and click **Edit application**.
     - In the **Redirect URLs** section, click **+ Add URI**.
