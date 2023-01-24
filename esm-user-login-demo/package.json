@@ -6,15 +6,17 @@
   "scripts": {
     "test": "jest",
     "dev": "vite",
-    "start": "vite",
+    "start": "tsc-watch --onSuccess \"vite --https\"",
     "build": "vite build",
     "serve": "vite preview"
   },
   "devDependencies": {
-    "vite": "^2.8.6"
+    "tsc-watch": "^6.0.0",
+    "vite": "^4.0.4"
   },
   "dependencies": {
-    "@arcgis/core": "^4.22.2"
+    "@arcgis/core": "^4.25.5",
+    "typescript": "^4.9.4"
   },
   "repository": {
     "type": "git",
