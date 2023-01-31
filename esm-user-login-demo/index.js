@@ -84,7 +84,7 @@ function getRoute(view) {
     }
     route
         .solve(routeUrl, routeParams)
-        // reponse of type __esri.DirectionsLastRoute
+        // response of type __esri.DirectionsLastRoute
         .then((response) => {
         showRoutes(response.routeResults);
         showDirections(response.routeResults[0].directions.features);
