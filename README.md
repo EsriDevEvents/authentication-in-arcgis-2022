@@ -18,7 +18,7 @@ There are 6 projects here that demonstrate 3 of the authentication methods:
 - [esm-app-token-demo](./esm-app-token-demo/README.md) demonstrates using [ArcGIS application credentials](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/application-credentials/) with a back-end server and OAuth 2.0 to get an application token to use basemaps and routing services in an [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) browser-based application using ES modules. This project requires a running server to handle the token negotiation, and there are two options provided here:
 
     - [nodejs-app-token-server-demo](./nodejs-app-token-server-demo/README.md) is a server written with Node.js.
-    - [php-app-token-server-demo](./nodejs-app-token-server-demo/README.md) is a server written with PHP.
+    - [php-app-token-server-demo](./php-app-token-server-demo/README.md) is a server written with PHP.
 
 The example servers are minimal implementations designed to demonstrate the necessary building blocks for such a service, but require additional security and operational considerations that are beyond the scope of this demo.
 
