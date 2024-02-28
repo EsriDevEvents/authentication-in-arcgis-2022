@@ -4,13 +4,13 @@ This demo project will use ArcGIS API for JavaScript with Vite to produce a brow
 
 This app also demonstrates how to use ESM, or [JavaScript Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) in a very simple and easy to use Node.js project. This project uses ArcGIS API keys to demonstrate how to authenticate [ArcGIS Platform location services](https://developers.arcgis.com/documentation/mapping-apis-and-services/services/) in a simple way for client apps.
 
-There are a lot of good programing practices preferring modules over traditional `<script>` tags. This project tries to demonstrate that while most of the [ArcGIS Platform examples](https://developers.arcgis.com/javascript/latest/display-a-map/) use `<script>` tags for simplicity. To learn more, see [Why use modules instead of script tags](https://hacks.mozilla.org/2015/08/es6-in-depth-modules/). This same [demo code](https://developers.arcgis.com/documentation/mapping-apis-and-services/routing/route-and-directions/) is available without ESM modules.
+There are a lot of good programming practices preferring modules over traditional `<script>` tags. This project tries to demonstrate that while most of the [ArcGIS Platform examples](https://developers.arcgis.com/javascript/latest/display-a-map/) use `<script>` tags for simplicity. To learn more, see [Why use modules instead of script tags](https://hacks.mozilla.org/2015/08/es6-in-depth-modules/). This same [demo code](https://developers.arcgis.com/documentation/mapping-apis-and-services/routing/route-and-directions/) is available without ESM modules.
 
 Also for simplicity, I chose to use [Vite](https://vitejs.dev/guide/) for the module bundler. This was a recommendation from [@odoe](https://github.com/odoe) and [@hhkaos](https://github.com/hhkaos) that actually turned out to work. Vite is the least amount of friction and learning of all the many [options for module bundling](https://openbase.com/categories/js/best-javascript-bundler-libraries).
 
 ## Installation
 
-1. Clone or fork this repository and `cd` into the `JavaScript/esm-api-key-demo`, or copy all the files in `JavaScript/esm-api-key-demo` into a new folder.
+1. Clone or fork this repository and `cd` into the `esm-api-key-demo`, or copy all the files in `esm-api-key-demo` into a new folder.
 2. Install the dependencies:
 
 ```bash

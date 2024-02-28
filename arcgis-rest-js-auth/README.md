@@ -1,6 +1,6 @@
 # ArcGIS REST JS demo using Vite bundler
 
-Demonstration how to perform OAuth authentication using the [ArcGIS REST JS](https://developers.arcgis.com/arcgis-rest-js/) modules. This is the same demo as [Authenticate with an ArcGIS identity (Browser)](https://developers.arcgis.com/arcgis-rest-js/authenticate/authenticate-with-an-arcgis-identity-rest-js-browser/) only using ESM module packaging with Vite.
+Demonstration how to perform OAuth authentication using the [ArcGIS REST JS](https://developers.arcgis.com/arcgis-rest-js/) modules. This is the same demo as [Implement user authentication (browser)](https://developers.arcgis.com/arcgis-rest-js/authentication/tutorials/implement-user-authentication-rest-js-browser/) only using ESM module packaging with Vite.
 
 Load `/index.html` in a browser. When you click **Sign In**, the app redirects to ArcGIS Online to ask for credentials and log you in. Once log in completes, your call back URL, `http://localhost:3000/authenticate.html`, is called with the access token. `/authenticate.html` parses the access token from the URL, saves it in local storage, and then redirects back to `/index.html`.
 

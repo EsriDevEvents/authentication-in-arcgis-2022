@@ -1,8 +1,8 @@
 # JavaScript demo using OAuth 2.0 and ArcGIS Identity
 
-This project will demonstrate how to use [ArcGIS identity with OAuth 2.0](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/oauth-2.0/) with an [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/latest/) app. ArcGIS identity provides different advantages when compared with API keys and application credentials authentication:
+This project will demonstrate how to use [ArcGIS identity with OAuth 2.0](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/oauth-2/) with an [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/latest/) app. ArcGIS identity provides different advantages when compared with API keys and application credentials authentication:
 
-1. A user login with OAuth 2.0 is considered the most secure of the [three ArcGIS authentication techniques](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/#authentication-methods).
+1. A user login with OAuth 2.0 is considered the most secure of the [three ArcGIS authentication techniques](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/types-of-authentication/).
 2. OAuth 2.0 is well seasoned and universally implemented by most PaaS and SaaS platforms.
 3. It requires the user to log in with an ArcGIS account (ArcGIS Platform, ArcGIS Online, or ArcGIS Enterprise), and that account has the required privileges to access the location services of the app.
 4. There are no secrets or personally identifiable information stored in the client app.

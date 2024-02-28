@@ -1,6 +1,6 @@
 # JavaScript demo using application token authentication
 
-This project will demonstrate how to use [ArcGIS application credentials](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/application-credentials/) with your [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/latest/) app. Application credentials provide different advantages when compared with API keys and OAuth user login authentication:
+This project will demonstrate how to use [ArcGIS application credentials](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/app-credential-authentication/) with your [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/latest/) app. Application credentials provide different advantages when compared with API keys and OAuth user login authentication:
 
 1. Application credentials will require a server process to negotiate credentials with an ArcGIS server. Is is considered insecure and highly risky to embed your app credentials in a client app, as your credentials could easily be hijacked. For some workflows, adding a server component adds a significant amount of complexity to building, testing, and deploying your app.
 2. Application credentials are short-lived tokens, expiring at most in 2 weeks, and require refreshing. API keys never expire.
@@ -10,7 +10,7 @@ This project will demonstrate how to use [ArcGIS application credentials](https:
     - When using an ArcGIS Online account, an application credential may not be used to access private hosted feature layers.
 5. You cannot use application credentials to create or update content.
 
-This project is the same demo as [ESM API key demo](../esm-api-key-demo/) only using application credentials to authenticate instead of API keys. This project also requires a server. I provided two implementations: one using [Node.js app-token-server-demo](../../node-js/app-token-server-demo/) and another with [PHP app-server-token-demo](../../php/app-token-server-demo/).
+This project is the same demo as [ESM API key demo](../esm-api-key-demo/) only using application credentials to authenticate instead of API keys. This project also requires a server. I provided two implementations: one using [Node.js app-token-server-demo](../nodejs-app-token-server-demo/) and another with [PHP app-server-token-demo](../php-app-token-server-demo/).
 This project uses [Axios](https://axios-http.com/) as the HTTP client to request the token from the server, but leaves some specific application framework security issues open as they are beyond the scope of this particular demonstration.
 
 ## Create your registered application
@@ -26,12 +26,12 @@ Go to your [developer dashboard](https://developers.arcgis.com/applications) and
 
 Follow the instructions to install and run one of the server apps:
 
-* [Node.js app-token-server-demo](../../node-js/app-token-server-demo/)
-* [PHP app-server-token-demo](../../php/app-token-server-demo/)
+- [Node.js app-token-server-demo](../nodejs-app-token-server-demo/)
+- [PHP app-server-token-demo](../php-app-token-server-demo/)
 
 ## Installation
 
-1. Clone or fork this repository and `cd` into the `JavaScript/esm-app-token-demo`, or copy all the files in `JavaScript/esm-app-token-demo` into a new folder.
+1. Clone or fork this repository and `cd` into the `esm-app-token-demo`, or copy all the files in `esm-app-token-demo` into a new folder.
 2. Install the dependencies:
 
 ```bash
@@ -77,6 +77,6 @@ A lot can go wrong with this demo, it requires a lot of things to work exactly r
 3. If the app runs but the map does not show then your token server is not working or it is not able to generate valid tokens.
 4. If the map shows but you cannot perform routing, then your ArcGIS user account does not have sufficient privileges to perform this service.
 5. If the map displays but your feature service does not:
-  - you must own the layer, you cannot use this with layers not owned by the account that created the OAuth 2.0 app registration.
-  - verify your feature service URL on your dashboard (go to https://developers.arcgis.com/layers, select your layer)
-  - verify you have features within the map extent.
+   - you must own the layer, you cannot use this with layers not owned by the account that created the OAuth 2.0 app registration.
+   - verify your feature service URL on your dashboard (go to https://developers.arcgis.com/layers, select your layer)
+   - verify you have features within the map extent.

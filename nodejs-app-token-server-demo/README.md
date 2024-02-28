@@ -2,7 +2,7 @@
 
 This is a demo implementation of a Node.js server that acts as a proxy service for ArcGIS application credentials.
 
-Learn more about [ArcGIS application credentials](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/application-credentials/).
+Learn more about [ArcGIS application credentials](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/app-credential-authentication/).
 
 ## The problem
 
