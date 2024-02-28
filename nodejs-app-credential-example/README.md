@@ -2,7 +2,7 @@
 
 This is an example used to demonstrate a Node.js server service that uses an ArcGIS application credential to authenticate with an ArcGIS location service.
 
-Learn more about [ArcGIS application credentials](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/application-credentials/). The example code here is an implementation of the Node.js example code snippets on that page.
+Learn more about [ArcGIS application credentials](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/app-credential-authentication/). The example code here is an implementation of the Node.js example code snippets on that page.
 
 ## The problem
 
